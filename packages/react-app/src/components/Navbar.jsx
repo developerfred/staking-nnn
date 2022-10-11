@@ -26,14 +26,13 @@ export default function Navbar({
 }) {
   const { address, setAddress, currentNetwork } = useContext(Web3Context);
   return (
-    <nav className="App md:pb-4 sm:pb-20 flex flex-col">
-      <div className="p-4 mx-auto flex items-center w-full">
+    <nav className="flex flex-col App md:pb-4 sm:pb-20">
+      <div className="flex items-center w-full p-4 mx-auto">
         <div className="flex flex-wrap md:flex-row">
-          <div className="float-right flex flex-row items-center font-medium text-gray-900">
-            <img src="/gitcoinLogoDark.svg" alt="Gitcoin Logo" />
+          <div className="flex flex-row items-center float-right font-medium text-gray-900">
+            <img src="/novem-gold-token.png" alt="Novem Gold Token" class="mr-2 h-12" />
             <img className="ml-6 mr-6" src="/logoLine.svg" alt="Logo Line" />
-            <img src="/gtcStakingLogoIcon.svg" alt="Passport Logo" />
-            <span className="ml-6 text-grey-500 text-lg hidden md:inline-flex">IDENTITY STAKING</span>
+            <span className="hidden ml-6 text-lg text-grey-500 md:inline-flex">NNN STAKING</span>
           </div>
         </div>
         <div className="ml-auto">

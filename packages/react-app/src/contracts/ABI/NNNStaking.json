@@ -44,7 +44,7 @@
         "type": "uint256"
       }
     ],
-    "name": "roundCreated",
+    "name": "periodCreated",
     "type": "event"
   },
   {
@@ -53,7 +53,7 @@
       {
         "indexed": false,
         "internalType": "uint256",
-        "name": "roundId",
+        "name": "periodId",
         "type": "uint256"
       },
       {
@@ -92,74 +92,6 @@
     "type": "event"
   },
   {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "staker",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "fromRound",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "toRound",
-        "type": "uint256"
-      }
-    ],
-    "name": "tokenMigrated",
-    "type": "event"
-  },
-  {
-    "anonymous": false,
-    "inputs": [
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "roundId",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "staker",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "address",
-        "name": "user",
-        "type": "address"
-      },
-      {
-        "indexed": false,
-        "internalType": "uint256",
-        "name": "amount",
-        "type": "uint256"
-      },
-      {
-        "indexed": false,
-        "internalType": "bool",
-        "name": "staked",
-        "type": "bool"
-      }
-    ],
-    "name": "xStake",
-    "type": "event"
-  },
-  {
     "inputs": [
       {
         "internalType": "uint256",
@@ -172,12 +104,17 @@
         "type": "uint256"
       },
       {
+        "internalType": "uint256",
+        "name": "rewardsPercent",
+        "type": "uint256"
+      },
+      {
         "internalType": "string",
         "name": "meta",
         "type": "string"
       }
     ],
-    "name": "createRound",
+    "name": "createPeriod",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -186,11 +123,11 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "roundId",
+        "name": "periodId",
         "type": "uint256"
       }
     ],
-    "name": "fetchRoundMeta",
+    "name": "fetchPeriodMeta",
     "outputs": [
       {
         "internalType": "uint256",
@@ -205,6 +142,11 @@
       {
         "internalType": "uint256",
         "name": "tvl",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "rewardsPercent",
         "type": "uint256"
       },
       {
@@ -244,7 +186,7 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "roundId",
+        "name": "periodId",
         "type": "uint256"
       },
       {
@@ -253,7 +195,7 @@
         "type": "address"
       }
     ],
-    "name": "getUserStakeForRound",
+    "name": "getStakingPeriodRewards",
     "outputs": [
       {
         "internalType": "uint256",
@@ -268,13 +210,8 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "roundId",
+        "name": "periodId",
         "type": "uint256"
-      },
-      {
-        "internalType": "address",
-        "name": "staker",
-        "type": "address"
       },
       {
         "internalType": "address",
@@ -282,7 +219,7 @@
         "type": "address"
       }
     ],
-    "name": "getUserXStakeForRound",
+    "name": "getUserStakeForPeriod",
     "outputs": [
       {
         "internalType": "uint256",
@@ -297,11 +234,11 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "roundId",
+        "name": "periodId",
         "type": "uint256"
       }
     ],
-    "name": "isActiveRound",
+    "name": "isActivePeriod",
     "outputs": [
       {
         "internalType": "bool",
@@ -314,7 +251,7 @@
   },
   {
     "inputs": [],
-    "name": "latestRound",
+    "name": "latestPeriod",
     "outputs": [
       {
         "internalType": "uint256",
@@ -323,19 +260,6 @@
       }
     ],
     "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "fromRound",
-        "type": "uint256"
-      }
-    ],
-    "name": "migrateStake",
-    "outputs": [],
-    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
@@ -362,7 +286,7 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "roundId",
+        "name": "periodId",
         "type": "uint256"
       },
       {
@@ -372,44 +296,6 @@
       }
     ],
     "name": "stake",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "bytes",
-        "name": "signature",
-        "type": "bytes"
-      },
-      {
-        "internalType": "string",
-        "name": "nonce",
-        "type": "string"
-      },
-      {
-        "internalType": "uint256",
-        "name": "timestamp",
-        "type": "uint256"
-      },
-      {
-        "internalType": "uint256",
-        "name": "roundId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address[]",
-        "name": "users",
-        "type": "address[]"
-      },
-      {
-        "internalType": "uint256[]",
-        "name": "amounts",
-        "type": "uint256[]"
-      }
-    ],
-    "name": "stakeUsers",
     "outputs": [],
     "stateMutability": "nonpayable",
     "type": "function"
@@ -481,7 +367,7 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "roundId",
+        "name": "periodId",
         "type": "uint256"
       },
       {
@@ -498,24 +384,6 @@
   {
     "inputs": [
       {
-        "internalType": "uint256",
-        "name": "roundId",
-        "type": "uint256"
-      },
-      {
-        "internalType": "address[]",
-        "name": "users",
-        "type": "address[]"
-      }
-    ],
-    "name": "unstakeUsers",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
         "internalType": "address",
         "name": "signer",
         "type": "address"
@@ -524,30 +392,6 @@
     "name": "updateSigner",
     "outputs": [],
     "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      },
-      {
-        "internalType": "bytes32",
-        "name": "",
-        "type": "bytes32"
-      }
-    ],
-    "name": "xStakes",
-    "outputs": [
-      {
-        "internalType": "uint256",
-        "name": "",
-        "type": "uint256"
-      }
-    ],
-    "stateMutability": "view",
     "type": "function"
   }
 ]

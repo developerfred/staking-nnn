@@ -69,40 +69,40 @@ export default function Account({
   return (
     <div className="flex">
       {!web3Modal?.cachedProvider && (
-        <button className="rounded-sm bg-purple-connectPurple py-4 px-10 text-white" onClick={accountButtonInfo.action}>
+        <button className="px-10 py-4 text-white rounded-sm bg-purple-connectPurple" onClick={accountButtonInfo.action}>
           {accountButtonInfo.name}
         </button>
       )}
       {web3Modal?.cachedProvider && (
         <>
-          <div className="flex items-center text-base justify-center">
+          <div className="flex items-center justify-center text-base">
             <>
               <span className="mr-5 hover:text-gray-900">
                 <TokenBalance
                   contracts={readContracts}
-                  img={"./gtcTokenLogo.svg"}
-                  name={"GTC"}
+                  img={"./novem-gold-token.png"}
+                  name={"NNN"}
                   address={address}
                   dollarMultiplier={null}
                 />
               </span>
               <div className="hidden md:inline-flex">
-                <a
-                  className="mr-5 hover:text-gray-900 flex flex-row"
+                {/* <a
+                  className="flex flex-row mr-5 hover:text-gray-900"
                   target="_blank"
                   rel="noopener noreferrer"
                   href="https://passport.gitcoin.co/"
                 >
-                  <img src={"./passportLogo.svg"} alt={"Passport Navbar Badge"} className="mr-2 h-6" /> Gitcoin Passport{" "}
+                  <img src={"./passportLogo.svg"} alt={"Passport Navbar Badge"} className="h-6 mr-2" /> Gitcoin Passport{" "}
                   <img
                     src={passport?.expiryDate && passport?.issuanceDate ? "./greenEllipse.svg" : "./redEllipse.svg"}
                     alt="passport status dot"
                     className="ml-2"
                   />
-                </a>
-                <span className="mr-5 hover:text-gray-900 capitalize flex flex-row">
+                </a> */}
+                <span className="flex flex-row mr-5 capitalize hover:text-gray-900">
                   {" "}
-                  <img className="mr-2 h-5" src={"./ethDiamondBlackIcon.svg"} alt="eth icon" />{" "}
+                  <img className="h-5 mr-2" src={"./ethDiamondBlackIcon.svg"} alt="eth icon" />{" "}
                   <span className="text-black">{currentNetwork?.name}</span>
                 </span>
               </div>
@@ -118,7 +118,7 @@ export default function Account({
                 }
               </div>
             </>
-            <div className="md:hidden inline-flex">
+            <div className="inline-flex md:hidden">
               <div
                 onClick={e => {
                   e.preventDefault();
@@ -138,7 +138,7 @@ export default function Account({
                 onClose={() => setOpenNavDrawer(false)}
                 visible={openNavDrawer}
               >
-                <div className="flex flex-1 flex-col items-center mt-8 justify-center">
+                <div className="flex flex-col items-center justify-center flex-1 mt-8">
                   <div className="mb-10">
                     <AddressDropDown
                       address={address}
@@ -149,12 +149,12 @@ export default function Account({
                   </div>
                   <div className="mb-10">
                     <a
-                      className="hover:text-gray-900 flex flex-row"
+                      className="flex flex-row hover:text-gray-900"
                       target="_blank"
                       rel="noopener noreferrer"
                       href="https://passport.gitcoin.co/"
                     >
-                      <img src={"./passportLogo.svg"} alt={"Passport Navbar Badge"} className="mr-2 h-6" /> Gitcoin
+                      <img src={"./passportLogo.svg"} alt={"Passport Navbar Badge"} className="h-6 mr-2" /> Gitcoin
                       Passport{" "}
                       <img
                         src={passport?.expiryDate && passport?.issuanceDate ? "./greenEllipse.svg" : "./redEllipse.svg"}

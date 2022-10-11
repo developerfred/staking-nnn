@@ -287,7 +287,7 @@ function App(props) {
                 contractConfig={contractConfig}
               />
               <Contract
-                name="IDStaking"
+                name="NNNStaking"
                 price={price}
                 signer={userSigner}
                 provider={localProvider}

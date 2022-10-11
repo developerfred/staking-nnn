@@ -32,22 +32,22 @@ const Rounds = ({
   const [stakingType, setStakingType] = useState("self");
 
   const unstake = async amount => {
-    tx(writeContracts.IDStaking.unstake(round + "", ethers.utils.parseUnits(amount)));
+    tx(writeContracts.NNNStaking.unstake(round + "", ethers.utils.parseUnits(amount)));
   };
 
-  const unstakeUsers = async users => {
-    tx(writeContracts.IDStaking.unstakeUsers(round + "", users));
-  };
+  // const unstakeUsers = async users => {
+  //   tx(writeContracts.NNNStaking.unstakeUsers(round + "", users));
+  // };
 
   return (
     <>
       <div className="text-gray-600 body-font">
         <StakeItem
           icon={<UserOutlined style={{ fontSize: "25px" }} />}
-          title="Self Staking"
+          title="NNN Staking 1 year"
           roundEnded={roundEnded}
           unstake={unstake}
-          description="Stake GTC on yourself"
+          description="NNN Staking 1 year"
           amount={getSelfStakeAmount(roundData)}
           buttonText={getSelfStakeAmount(roundData) ? "Modify Stake" : "Stake"}
           buttonHandler={() => {
@@ -56,20 +56,32 @@ const Rounds = ({
           }}
         />
 
-        <StakeItemCommunity
-          icon={<UsergroupAddOutlined style={{ fontSize: "25px" }} />}
+        <StakeItem
+          icon={<UserOutlined style={{ fontSize: "25px" }} />}
+          title="NNN Staking 2 year"
           roundEnded={roundEnded}
-          unstakeUsers={unstakeUsers}
-          title="Community Staking"
-          description="Stake GTC on other people"
-          amount={getCommunityStakeAmount(roundData)}
-          buttonText={getCommunityStakeAmount(roundData) ? "Modify Stake" : "Stake"}
+          unstake={unstake}
+          description="NNN Staking 2 year"
+          amount={getSelfStakeAmount(roundData)}
+          buttonText={getSelfStakeAmount(roundData) ? "Modify Stake" : "Stake"}
           buttonHandler={() => {
-            setStakingType("community");
+            setStakingType("self");
             setIsModalVisible(true);
           }}
-          roundData={roundData?.user?.xstakeTo}
-          mainnetProvider={mainnetProvider}
+        />
+
+        <StakeItem
+          icon={<UserOutlined style={{ fontSize: "25px" }} />}
+          title="NNN Staking 5 year"
+          roundEnded={roundEnded}
+          unstake={unstake}
+          description="NNN Staking 5 year"
+          amount={getSelfStakeAmount(roundData)}
+          buttonText={getSelfStakeAmount(roundData) ? "Modify Stake" : "Stake"}
+          buttonHandler={() => {
+            setStakingType("self");
+            setIsModalVisible(true);
+          }}
         />
       </div>
 

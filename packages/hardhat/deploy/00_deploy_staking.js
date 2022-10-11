@@ -9,8 +9,8 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const { deployer } = await getNamedAccounts();
   const chainId = await getChainId();
 
-  const admin = "0x26c958dee4D9CcA4C106cb0D20F1DAcFbDCD5fd2";
-  const trustedSigner = "0xb9598Aca9eDA4e229924726A11b38d8073184899";
+  const admin = "0xd1a8Dd23e356B9fAE27dF5DeF9ea025A602EC81e";
+  const trustedSigner = "0xd1a8Dd23e356B9fAE27dF5DeF9ea025A602EC81e";
 
   // const Token = await deploy("Token", {
   //   from: deployer,
@@ -18,11 +18,11 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   //   waitConfirmations: 5,
   // });
 
-  const Token = { address: "0xDe30da39c46104798bB5aA3fe8B9e0e1F348163F" };
+  const Token = { address: "0x5D5c5c1d14FaF8Ff704295b2F502dAA9D06799a0" };
 
   const stakingArgs = [Token.address, trustedSigner];
 
-  await deploy("IDStaking", {
+  await deploy("NNNStaking", {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
     args: stakingArgs,
@@ -31,8 +31,38 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   });
 
   // Getting a previously deployed contract
-  const IDStaking = await ethers.getContract("IDStaking", deployer);
-  await IDStaking.transferOwnership(admin);
+  const NNNStaking = await ethers.getContract("NNNStaking", deployer);
+
+  // Create Periods 
+  // use https://www.unixtimestamp.com/ to convert date to timestamp
+  // deploy period 1
+  await NNNStaking.createPeriod(
+    1665518188, // start time (time now)
+    1697054188, // timestamp for 1 years from now
+    5,
+    "Staking Novem Gold Token fo 1 Year 5% APY"
+  );
+
+
+   // deploy period 2
+   await NNNStaking.createPeriod(
+    1665518188, // start time (time now)
+    1697054188, // timestamp for 2 years from now
+    6,
+    "Staking Novem Gold Token fo 2 Year 6% APY"
+  );
+
+
+  // deploy period 3
+  await NNNStaking.createPeriod(
+    1665518188, // start time (time now)
+    1697054188, // timestamp for 5 years from now
+    8,
+    "Staking Novem Gold Token fo 5 Year 8% APY"
+  );
+
+
+  await NNNStaking.transferOwnership(admin);
 
   // Verify from the command line by running `yarn verify`
 
@@ -41,8 +71,8 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   try {
     if (chainId !== localChainId) {
       await run("verify:verify", {
-        address: IDStaking.address,
-        contract: "contracts/IDStaking.sol:IDStaking",
+        address: NNNStaking.address,
+        contract: "contracts/NNNStaking.sol:NNNStaking",
         constructorArguments: stakingArgs,
       });
     }
@@ -50,4 +80,4 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
     console.error(error);
   }
 };
-module.exports.tags = ["IDStaking", "Token"];
+module.exports.tags = ["NNNStaking", "Token"];

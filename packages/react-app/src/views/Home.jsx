@@ -79,8 +79,8 @@ function Home({
   };
 
   return (
-    <div className="min-h-max min-h-default bg-landingPageBackground bg-cover bg-no-repeat text-gray-100 md:bg-center">
-      <Modal
+    <div className="text-gray-100 bg-no-repeat bg-cover min-h-max min-h-default bg-landingPageBackground md:bg-center">
+      {/* <Modal
         title="Create a Passport to Get Started"
         visible={isModalVisible}
         onOk={handleOk}
@@ -89,7 +89,7 @@ function Home({
         footer={[
           <button
             key="submit"
-            className="rounded-sm rounded bg-purple-connectPurple py-2 px-10 text-white"
+            className="px-10 py-2 text-white rounded-sm rounded bg-purple-connectPurple"
             onClick={handleOk}
           >
             <ExportOutlined />
@@ -101,7 +101,7 @@ function Home({
           Looks like you don’t have a Passport yet! To get started on Identity Staking, create a passport on Gitcoin
           Passport
         </p>
-      </Modal>
+      </Modal> */}
       <Navbar
         networkOptions={networkOptions}
         selectedNetwork={selectedNetwork}
@@ -123,22 +123,23 @@ function Home({
         loadWeb3Modal={loadWeb3Modal}
         blockExplorer={blockExplorer}
       />
-      <div className="container mx-auto px-5 py-2">
-        <div className="mx-auto flex flex-wrap">
-          <div className="mt-0 md:ml-4 w-full pb-6 text-white sm:mt-40 sm:w-1/2 md:mt-40 md:w-1/2 md:pt-6">
+      <div className="container px-5 py-2 mx-auto">
+        <div className="flex flex-wrap mx-auto">
+          <div className="w-full pb-6 mt-0 text-white md:ml-4 sm:mt-40 sm:w-1/2 md:mt-40 md:w-1/2 md:pt-6">
             <div className="leading-relaxed">
-              <p className="text-2xl sm:text-xl md:text-xl text-black text-left">Identity Staking</p>
-              <p className="text-2xl sm:text-3xl md:text-3xl text-black text-left">
-                Defend against sybil by staking on your identity
+              <p className="text-2xl text-left text-black sm:text-xl md:text-xl">NNN Staking</p>
+              <p className="text-2xl text-left text-black sm:text-3xl md:text-3xl">
+                Staking NNN Token
               </p>
             </div>
-            <div className="text-left mt-0 text-lg text-gray-900 sm:text-xl md:mt-10 md:pr-20 md:text-xl">
-              Identity Staking is a mechanism that allows you to stake your own identity or stake on somebody else's. We
-              use GTC to stake, and each staking is associated with a Passport. By staking, the profile of stamps in the
-              Passport becomes more unique, which will likely result in a stronger Trust Bonus score for Grants Round
-              15.
+            <div className="mt-0 text-lg text-left text-gray-900 sm:text-xl md:mt-10 md:pr-20 md:text-xl">
+            Staking rewards, x % of NNN value in NVM tokens:
+
+            1 year => 5%
+            2 years => every year 6%
+            5 years => every year 8%
             </div>
-            <div className="mt-4 w-full sm:mt-10 sm:w-1/2 md:mt-10 md:block md:w-1/2">
+            <div className="w-full mt-4 sm:mt-10 sm:w-1/2 md:mt-10 md:block md:w-1/2">
               <AccountHomePage
                 passport={passport}
                 web3Modal={web3Modal}

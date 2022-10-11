@@ -3,26 +3,26 @@ import UnstakeButton from "./UnstakeButton";
 
 const StakeItem = ({ icon, roundEnded, unstake, title, description, amount, buttonText, buttonHandler }) => {
   return (
-    <div className="flex items-start md:items-center mx-auto border-b pb-10 mb-10 border-divider flex-col md:flex-row">
-      <div className="flex flex-1 items-center justify-start">
-        <div className="w-20 h-20 mr-5 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500">
+    <div className="flex flex-col items-start pb-10 mx-auto mb-10 border-b md:items-center border-divider md:flex-row">
+      <div className="flex items-center justify-start flex-1">
+        <div className="inline-flex items-center justify-center w-20 h-20 mr-5 text-indigo-500 bg-indigo-100 rounded-full">
           {icon}
         </div>
         <div className="flex-col text-left">
-          <h2 className="text-gray-900 text-lg mb-0">{title}</h2>
-          <div className="leading-relaxed text-base">{description}</div>
+          <h2 className="mb-0 text-lg text-gray-900">{title}</h2>
+          <div className="text-base leading-relaxed">{description}</div>
         </div>
       </div>
-      <div className="flex flex-col md:flex-auto items-center justify-center flex-grow text-left md:text-center md:my-0 my-7">
-        <h2 className="text-gray-900 text-lg title-font font-medium mb-0">{amount} GTC</h2>
-        <span className="leading-relaxed text-base">Staked</span>
+      <div className="flex flex-col items-center justify-center flex-grow text-left md:flex-auto md:text-center md:my-0 my-7">
+        <h2 className="mb-0 text-lg font-medium text-gray-900 title-font">{amount} NNN</h2>
+        <span className="text-base leading-relaxed">Staked</span>
       </div>
       {roundEnded ? (
         <UnstakeButton amount={amount} handler={() => unstake(amount)} />
       ) : (
         <button
           onClick={buttonHandler}
-          className="flex md:max-w-button w-full justify-center text-white text-center bg-purple-connectPurple border-0 py-2 focus:outline-none hover:bg-indigo-600 rounded-sm text-lg"
+          className="flex justify-center w-full py-2 text-lg text-center text-white border-0 rounded-sm md:max-w-button bg-purple-connectPurple focus:outline-none hover:bg-indigo-600"
         >
           <span>{buttonText}</span>
         </button>

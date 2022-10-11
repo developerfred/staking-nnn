@@ -4,7 +4,7 @@ function Admin({ tx, writeContracts }) {
   const [form] = Form.useForm();
 
   const initialize = async v => {
-    tx(writeContracts.IDStaking.createRound(v.start, v.duration, ""));
+    tx(writeContracts.NNNStaking.createRound(v.start, v.duration, ""));
   };
 
   return (

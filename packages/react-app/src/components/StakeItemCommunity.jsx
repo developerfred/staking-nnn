@@ -24,27 +24,27 @@ const StakeItemCommunity = ({
   };
 
   return (
-    <div className="border-divider border-b">
-      <div className="flex items-start md:items-center mx-auto pb-4 flex-col md:flex-row">
-        <div className="flex flex-1 items-center justify-start">
-          <div className="w-20 h-20 mr-5 inline-flex items-center justify-center rounded-full bg-indigo-100 text-indigo-500">
+    <div className="border-b border-divider">
+      <div className="flex flex-col items-start pb-4 mx-auto md:items-center md:flex-row">
+        <div className="flex items-center justify-start flex-1">
+          <div className="inline-flex items-center justify-center w-20 h-20 mr-5 text-indigo-500 bg-indigo-100 rounded-full">
             {icon}
           </div>
           <div className="flex-col text-left">
-            <h2 className="text-gray-900 text-lg title-font font-medium mb-0">{title}</h2>
-            <div className="leading-relaxed text-base">{description}</div>
+            <h2 className="mb-0 text-lg font-medium text-gray-900 title-font">{title}</h2>
+            <div className="text-base leading-relaxed">{description}</div>
           </div>
         </div>
-        <div className="flex flex-col md:flex-auto items-center justify-center flex-grow text-left md:text-center md:my-0 my-7">
-          <h2 className="text-gray-900 text-lg title-font font-medium mb-0">{amount} GTC</h2>
-          <span className="leading-relaxed text-base">Staked</span>
+        <div className="flex flex-col items-center justify-center flex-grow text-left md:flex-auto md:text-center md:my-0 my-7">
+          <h2 className="mb-0 text-lg font-medium text-gray-900 title-font">{amount} NNN</h2>
+          <span className="text-base leading-relaxed">Staked</span>
         </div>
         {roundEnded ? (
           <UnstakeButton amount={amount} handler={unstakeHandler} />
         ) : (
           <button
             onClick={buttonHandler}
-            className="flex md:max-w-button w-full justify-center text-white text-center bg-purple-connectPurple border-0 py-2 focus:outline-none hover:bg-indigo-600 rounded-sm text-lg"
+            className="flex justify-center w-full py-2 text-lg text-center text-white border-0 rounded-sm md:max-w-button bg-purple-connectPurple focus:outline-none hover:bg-indigo-600"
           >
             <span>{buttonText}</span>
           </button>
@@ -56,10 +56,10 @@ const StakeItemCommunity = ({
         {roundData &&
           roundData.map(data => (
             <li className="flex flex-grow ml-24">
-              <div className="text-xl flex flex-1">
+              <div className="flex flex-1 text-xl">
                 <DisplayAddressEns style={{ color: "black" }} address={data.to.address} ensProvider={mainnetProvider} />
               </div>
-              <div className="text-xl flex flex-1">{formatAmountUnits(data.amount)} GTC</div>
+              <div className="flex flex-1 text-xl">{formatAmountUnits(data.amount)} GTC</div>
             </li>
           ))}
       </ul>

@@ -7,7 +7,7 @@ import { useContractReader } from "eth-hooks";
 function Stakes({ readContracts, localProvider, mainnetProvider }) {
   const tokenSymbol = useContractReader(readContracts, "Token", "symbol");
 
-  const stakeLogs = (useEventListener(readContracts, "IDStaking", "xStaked", localProvider) || []).reverse();
+  const stakeLogs = (useEventListener(readContracts, "NNNStaking", localProvider) || []).reverse();
 
   return (
     <>
@@ -26,7 +26,7 @@ function Stakes({ readContracts, localProvider, mainnetProvider }) {
         <div>
           {stakeLogs.map(stake => (
             <Typography.Paragraph key={stake.transactionHash}>
-              Round {stake.args.roundId?.toString()}:{" "}
+              Period {stake.args.roundId?.toString()}:{" "}
               <Address ensProvider={mainnetProvider} fontSize={14} address={stake.args.staker} />{" "}
               {stake.args.staked ? "staked" : "unstaked"} {ethers.utils.formatUnits(stake.args.amount)} {tokenSymbol} on{" "}
               <Address ensProvider={mainnetProvider} fontSize={14} address={stake.args.user} />{" "}

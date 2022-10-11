@@ -44,7 +44,7 @@ export default function CommunityStakingModalContent({
       if (address && readContracts?.Token) {
         const readUpdate = readContracts?.Token;
         const decimals = await readUpdate?.decimals();
-        const allowance = await readUpdate?.allowance(address, readContracts?.IDStaking?.address);
+        const allowance = await readUpdate?.allowance(address, readContracts?.NNNStaking?.address);
         const balance = await readUpdate?.balanceOf(address);
 
         const adjustedAmount = ethers.utils.parseUnits(stakeAmount.toString() || "0", decimals);
@@ -89,11 +89,11 @@ export default function CommunityStakingModalContent({
 
   // User approves usage of token
   const approve = async () => {
-    await tx(writeContracts.Token.approve(readContracts.IDStaking.address, ethers.utils.parseUnits("10000000")));
+    await tx(writeContracts.Token.approve(readContracts.NNNStaking.address, ethers.utils.parseUnits("10000000")));
   };
 
   const stake = async (id, amount) => {
-    tx(writeContracts.IDStaking.stake(id + "", ethers.utils.parseUnits(amount)));
+    tx(writeContracts.NNNStaking.stake(id + "", ethers.utils.parseUnits(amount)));
   };
 
   const handleCancel = () => {
