@@ -1,4 +1,4 @@
-# 🏗 Scaffold-ETH
+# 🏗 Staking Dapp using Scaffold-ETH
 
 > everything you need to build on Ethereum! 🚀
 

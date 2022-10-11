@@ -17,16 +17,49 @@ module.exports = async ({ getNamedAccounts, deployments, getChainId }) => {
   const { deployer } = await getNamedAccounts();
   const chainId = await getChainId();
 
-  await deploy("YourContract", {
+  await deploy("NNNStaking", {
     // Learn more about args here: https://www.npmjs.com/package/hardhat-deploy#deploymentsdeploy
     from: deployer,
+    //  staking token contracts, deployer address
+    args: ["0x5D5c5c1d14FaF8Ff704295b2F502dAA9D06799a0", deployer],
     // args: [ "Hello", ethers.utils.parseEther("1.5") ],
     log: true,
     waitConfirmations: 5,
   });
 
   // Getting a previously deployed contract
-  const YourContract = await ethers.getContract("YourContract", deployer);
+  const stakingContract = await ethers.getContract("NNNStaking", deployer);
+
+  await stakingContract.deployed();
+
+  // Create Periods 
+  // use https://www.unixtimestamp.com/ to convert date to timestamp
+  // deploy period 1
+  await stakingContract.createPeriod(
+    1665518188, // start time (time now)
+    1697054188, // timestamp for 1 years from now
+    5,
+    "Staking Novem Gold Token fo 1 Year 5% APY"
+  );
+
+
+   // deploy period 2
+   await stakingContract.createPeriod(
+    1665518188, // start time (time now)
+    1697054188, // timestamp for 2 years from now
+    6,
+    "Staking Novem Gold Token fo 2 Year 6% APY"
+  );
+
+
+  // deploy period 3
+  await stakingContract.createPeriod(
+    1665518188, // start time (time now)
+    1697054188, // timestamp for 5 years from now
+    8,
+    "Staking Novem Gold Token fo 5 Year 8% APY"
+  );
+
   /*  await YourContract.setPurpose("Hello");
   
     // To take ownership of yourContract using the ownable library uncomment next line and add the 

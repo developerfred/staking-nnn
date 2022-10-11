@@ -1,4 +1,8 @@
 import { Button, Col, Menu, Row } from "antd";
+import { Box } from "@chakra-ui/react";
+import { StakingCard } from "./components/Staking/stakingCard";
+import { info as periods } from "./data/staking-info";
+import { StakingGrid } from "./components/Staking/stakingGrid";
 import "antd/dist/antd.css";
 import {
   useBalance,
@@ -27,7 +31,7 @@ import {
 import { NETWORKS, ALCHEMY_KEY } from "./constants";
 import externalContracts from "./contracts/external_contracts";
 // contracts
-import deployedContracts from "./contracts/hardhat_contracts.json";
+import deployedContracts from "./contracts/stakingContractAbi.json";
 import { Transactor, Web3ModalSetup } from "./helpers";
 import { Home, ExampleUI, Hints, Subgraph } from "./views";
 import { useStaticJsonRPC } from "./hooks";
