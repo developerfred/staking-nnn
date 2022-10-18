@@ -226,6 +226,13 @@ export const NETWORKS = {
     blockExplorer: "https://moonbeam-explorer.netlify.app/",
     rpcUrl: "http://127.0.0.1:9933",
   },
+  bscTestNet: {
+    name: "bscTestNet",
+    color: "#53CBC9",
+    chainId: 97,
+    blockExplorer: "https://testnet.bscscan.com/",
+    rpcUrl: "https://data-seed-prebsc-2-s3.binance.org:8545/",
+  },
 };
 
 export const NETWORK = chainId => {

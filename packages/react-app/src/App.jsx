@@ -55,6 +55,7 @@ const providers = [
   "https://eth-mainnet.gateway.pokt.network/v1/lb/611156b4a585a20035148406",
   `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_KEY}`,
   // "https://rpc.scaffoldeth.io:48544",
+  //"https://data-seed-prebsc-2-s3.binance.org:8545/"
 ];
 
 function App(props) {
@@ -62,7 +63,7 @@ function App(props) {
   const { address, setAddress, setCurrentNetwork } = useContext(Web3Context);
   // specify all the chains your app is available on. Eg: ['localhost', 'mainnet', ...otherNetworks ]
   // reference './constants.js' for other networks
-  const networkOptions = [initialNetwork.name, "mainnet", "goerli"];
+  const networkOptions = [initialNetwork.name, "bscTestNet"];
 
   const [injectedProvider, setInjectedProvider] = useState();
   // const [address, setAddress] = useState("");
